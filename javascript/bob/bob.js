@@ -8,9 +8,6 @@ var Bob = function() {};
 Bob.prototype.hey = function(input) {
   var last = input.length - 1;
   var alpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-  var upper = alpha.map(function(letter){
-    return letter.toUpperCase();
-  });
 
   var hasLetters = false;
   for (var j = 0; j < input.length; j++){
