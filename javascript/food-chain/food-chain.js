@@ -41,8 +41,7 @@ function FoodChain(){
   this.verses = function(a,b){
     var whole = '';
     while (a <= b){
-      whole += this.verse(a);
-      whole += '\n';
+      whole += this.verse(a) + '\n';
       a++;
     }
     return whole;

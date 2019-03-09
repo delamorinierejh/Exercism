@@ -7,12 +7,12 @@ class Series
   def slices(n)
     raise ArgumentError if n > @code.length 
     arr = []
-    count = n-1
-    start = 0
-    while count < @code.length
-      arr << @code[start..count]
-      start += 1
-      count += 1
+    i = 0
+    j = n-1
+    while j < @code.length
+      arr << @code[i..j]
+      i += 1
+      j += 1
     end
     arr
   end

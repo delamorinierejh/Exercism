@@ -9,14 +9,10 @@ class Trinary
   end
 
   def to_decimal
-    if @num != @num.gsub(/\D/, '')
-      return 0
-    end
+    return 0 if @num != @num.gsub(/\D/, '')
     total = 0
     @num.chars.reverse.each_with_index do |val, index|
-      if val.to_i > 2
-        return 0
-      end
+      return 0 if val.to_i > 2
       total += val.to_i * (3**index)
     end
     total

@@ -1,13 +1,8 @@
 function Isogram(word){
-  this.word = word;
+  this.word = word.toLowerCase().replace(/[^a-zA-Z0-9_é]/g, '');
   this.isIsogram = function(){
-    
-    var hold = this.word;
-    hold = hold.replace(/[^a-zA-Z0-9_é]/g, '').toLowerCase().split('');
-    for (var i = 0; i < hold.length; i++){
-      if (hold.lastIndexOf(hold[i]) !== i){
-        return false;
-      }
+    for (var i = 0; i < this.word.length - 1; i++) {
+      if (this.word.indexOf(this.word[i]) !== this.word.lastIndexOf(this.word[i])) return false;
     }
     return true;
   };

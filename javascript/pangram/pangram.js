@@ -1,14 +1,11 @@
 function Pangram(sentence){
-  this.sentence = sentence;
+  this.sentence = sentence.toLowerCase().replace(/[^a-z]/g, '').split('');
   this.isPangram = function(){
-    var hold = this.sentence.toLowerCase();
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    for (var i = 0; i < alphabet.length; i++){
-      if (hold.indexOf(alphabet[i]) === -1){
-        return false;
-      }
-    }
-    return true;
+    var arr = []
+    this.sentence.forEach(function(char){
+      if (arr.indexOf(char) == -1) arr.push(char);
+    });
+    return arr.length === 26;
   };
 }
 

@@ -4,21 +4,40 @@ end
 
 class Game
 
+  attr_accessor :rolls_array, :game_score, :new_frame, :frame_count, :last_score
+
   def initialize
     @game_score = 0
-    @rolls_array = []
+    @new_frame = false
+    @frame_count = 1
+    @last_score = 0
   end
 
   def roll(score)
+    raise Game::BowlingError
     @game_score += score
-    @game_score += score if ((@rolls_array.length%2 == 0 && @rolls_array.length > 0 && @rolls_array.length < 19 && (@rolls_array[-2] + @rolls_array[-1]) == 10) || @rolls_array[-1] == 10 && @rolls_array.length < 19)
-    @game_score += score if (@rolls_array.length < 19 && @rolls_array.length > 1 && @rolls_array[-2] == 10)
-    @rolls_array.push(score)
-    @game_score = 300 if @game_score > 300
+
+    adjust_new_frame(score)
   end
 
   def score
-    @game_score
+    game_score
   end
 
+  private
+
+  def adjust_new_frame(score)
+    if score == 10
+      new_frame = true
+    else
+      new_frame = !new_frame
+    end
+    frame_count += 1 if new_frame
+  end
+end
+
+module Game
+  class BowlingError < Error
+
+  end
 end
